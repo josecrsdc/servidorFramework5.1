@@ -1,8 +1,8 @@
 <?php
 
-    namespace controllers;
+    namespace app\controllers;
     use core\Controller;
-    use models\Director as modelDirector;
+    use app\models\Director as modelDirector;
 
     class Director extends Controller{
         

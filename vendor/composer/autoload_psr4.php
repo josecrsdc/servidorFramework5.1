@@ -6,9 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'models\\' => array($baseDir . '/models'),
     'core\\' => array($baseDir . '/core'),
     'controllers\\' => array($baseDir . '/controllers'),
+    'app\\' => array($baseDir . '/app'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'League\\Plates\\' => array($vendorDir . '/league/plates/src'),
     'JmesPath\\' => array($vendorDir . '/mtdowling/jmespath.php/src'),

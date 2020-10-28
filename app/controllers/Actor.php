@@ -1,8 +1,8 @@
 <?php
 
-    namespace controllers;
+    namespace app\controllers;
     use core\Controller;
-    use models\Actor as modelActor;
+    use app\models\Actor as modelActor;
 
     class Actor extends Controller{
 

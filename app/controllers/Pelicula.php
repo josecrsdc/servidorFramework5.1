@@ -1,8 +1,8 @@
 <?php
 
-    namespace controllers;
+    namespace app\controllers;
     use core\Controller;
-    use models\Pelicula as modelPelicula;
+    use app\models\Pelicula as modelPelicula;
 
     class Pelicula extends Controller{
 
