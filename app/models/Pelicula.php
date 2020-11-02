@@ -6,7 +6,7 @@
 
     class Pelicula extends Model{
         
-        protected $table = 'peliculas.php';
+        protected $table = 'peliculas';
 
         function getDirectores($id_pelicula) {
             $directores = include('./bbdd/directores.php');

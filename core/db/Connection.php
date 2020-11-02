@@ -1,6 +1,7 @@
 <?php
 
 namespace core\db;
+use PDO;
 
     class Connection {
         
@@ -21,7 +22,7 @@ namespace core\db;
         }
 
         //Metodos
-        public function getPdo() {
+        private function getPdo() {
             return $this->pdo;
         }
 

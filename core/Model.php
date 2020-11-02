@@ -1,20 +1,22 @@
 <?php
     namespace core;
+    use core\db\Db;
     
     class Model {
 
         protected $table;
 
         protected function getAll() {
-            $result = include('./bbdd/' . $this->table);
+            $result = Db::select($this->table);
+            
             return $result;
         }
 
         protected function getById($id) {
-            $result = array();
-            $rows = include('./bbdd/' . $this->table);
-            $expression = "[?id == `" . $id . "`]";
+            $rows = Db::select($this->table);
+            $expression = "[?id == '$id']";
             $result = \JmesPath\search($expression, $rows)[0];
+            
             return $result;
         }
 

@@ -1,21 +1,23 @@
 <?php
 
 namespace core\db;
+use core\db\Connection;
 
-    class Bd {
+    class Db {
         
-
         //Metodos
 
-        private function execute($sql, $params) {
+        private function execute($sql) {
             $pdo = Connection::getInstance()::getPdo();
             $ps = $pdo->prepare($sql);
-            $ps->execute($params);
+            $ps->execute();
             return $ps->fetchAll(\PDO::FETCH_ASSOC);
         }
             
-        public function select($tabla, $campos, $condiciones, $parametros) {
-            # code...
+        public function select($table) {
+            $sql = "SELECT * FROM $table";
+            return Db::execute($sql);
+            
         }
 
         
