@@ -13,7 +13,7 @@ use PDO;
         //Constructor
         function __construct() {
             try {
-                $this->pdo = new \PDO('mysql:host=localhost;dbname=cine', 'root', 'admin');
+                $this->pdo = new \PDO($_ENV['DB_CONNECTION'] . ':host=' . $_ENV['DB_HOST'] . ';dbname=' . $_ENV['DB_DATABASE'], $_ENV['DB_USERNAME'], $_ENV['DB_PASSWORD']);
                 $this->pdo->exec("set names utf8");
                 $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 } catch (\PDOException $e) {
