@@ -5,21 +5,37 @@
     class Model {
 
         protected $table;
+        public $primary_key = 'id';
 
-        protected function getAll() {
+        protected function all() {
             $result = Db::select($this->table);
             
             return $result;
         }
 
-        protected function getById($id) {
-            $rows = Db::select($this->table);
-            $expression = "[?id == '$id']";
-            $result = \JmesPath\search($expression, $rows)[0];
+        protected function find($pk) {
+            $fields = ['*'];
+            $where = $this->primary_key . " = :id";
+            $params = [
+                ":id" => $pk
+            ];
+            $result = Db::select($this->table, $fields, $where, $params);
             
-            return $result;
+            return $result[0];
         }
 
+        public function belongsToMany($t2, $tj, $pk_tJ1, $pk_tJ2, $pk, $pk_t2 = 'id') {
+            $sql = 'SELECT a.* FROM ' . $t2 . ' a ' . 
+                'JOIN ' . $tj . ' pa ON a.' . $pk_t2 . ' = pa.' . $pk_tJ2 . ' ' .
+                'JOIN ' . $this->table . ' p ON p.' . $pk_t2 . '=pa.' . $pk_tJ1 . ' AND p.' . $this->primary_key . ' = :id';
+            
+            $params = [
+                ":id" => $pk
+            ];
+            return Db::execute($sql, $params);
+        }
+
+        
         public static function __callStatic($name, $arguments) {
             return (new static)->$name(...$arguments);
         }

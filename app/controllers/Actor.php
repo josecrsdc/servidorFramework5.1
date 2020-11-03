@@ -9,11 +9,7 @@
     class Actor extends Controller{
 
         function getById($vars) {
-            $actor = modelActor::getById($vars['id']);
+            $actor = modelActor::find($vars['id']);
             echo $this->templates->render('actores_ficha', ['actor' => $actor]);
-            $actores =  Db::select("actores");
-            var_dump($actores);
-                
-            
             }
     }

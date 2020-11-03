@@ -5,5 +5,5 @@
     use core\Model;
 
     class Actor extends Model{
-        protected $table = 'actores.php';
+        protected $table = 'actores';
     }

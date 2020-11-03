@@ -26,7 +26,7 @@ use PDO;
             return $this->pdo;
         }
 
-        protected function getInstance() {
+        private function getInstance() {
             if(self::$instance == null) {
                 self::$instance = new Connection();
             }
